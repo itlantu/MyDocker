@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define SourcesFilePath "/etc/apt/sources.list"
 #define len 10
@@ -23,17 +24,36 @@ const char *sources[len] = {
 
 int main()
 {
-    FILE *sourcesFile = fopen("SourcesFilePath", "r");
-    fclose(sourcesFile);
-    for(int i = 0; i < len; i++){
-        if(fputs(sources[i],sourcesFile) == EOF){
-            printf("fputs Error \n");
-            return 1;
-        }
-        if(fputc((int)'\n',sourcesFile) == EOF){
-            printf("fputc Error \n");
-            return 2;
+    FILE *sourcesFile;
+    int length = 0;
+    int lenlist[len];
+    int count = 0;
+
+    for(int i = 0; i < len - 1; i++){
+        lenlist[i] = strlen(sources[i]) - 1;
+        length += lenlist[i];
+    }
+    char *s = (char*)malloc(sizeof(char) * length);
+
+    for(int i = 0; i < len -1 ;i++){
+        int v = lenlist[i];
+        for(int j = 0; j < v; j++,count++){
+            s[count] = sources[i][j];
         }
     }
+    s[length - 1] = '\0';
+
+    if((sourcesFile = fopen("SourcesFilePath", "r")) == NULL){
+        printf("fopen Error \n");
+        return 1;
+    }
+
+    if((fputs(s,sourcesFile)) == NULL){
+        printf("fputs Error \n");
+        return 2;
+    }
+    
+    free(s);
+    fclose(sourcesFile);
     return 0;
 }
