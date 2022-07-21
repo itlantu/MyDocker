@@ -26,11 +26,11 @@ int main()
 {
     FILE *sourcesFile;
     int length = 0;
-    unsigned long lenlist[len];
+    int lenlist[len];
     int count = 0;
 
     for(int i = 0; i < len - 1; i++){
-        lenlist[i] = strlen(sources[i]) - 1;
+        lenlist[i] = (int)strlen(sources[i]) - 1;
         length += lenlist[i];
     }
     char *s = (char*)malloc(sizeof(char) * (length + 10));
@@ -43,12 +43,12 @@ int main()
     }
     s[length - 1] = '\0';
 
-    if((sourcesFile = fopen("SourcesFilePath", "r")) == (int)NULL){
+    if((sourcesFile = fopen("SourcesFilePath", "w")) == NULL){
         printf("fopen Error \n");
         return 1;
     }
 
-    if((fputs(s,sourcesFile)) == NULL){
+    if((fputs(s,sourcesFile)) == (int)NULL){
         printf("fputs Error \n");
         return 2;
     }
