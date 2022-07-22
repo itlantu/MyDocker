@@ -19,8 +19,11 @@ RUN apt update
 
 # 下载一些常用的开发软件
 #RUN apt install -y openssh-server
-RUN apt install -y clang
-RUN apt install -y vim
+# RUN apt install -y clang
+# RUN apt install -y vim
+
+# 下载vscode—server
+RUN /home/MyDocker/script/vs-code.install.sh
 
 # 下载一些实用工具类软件
 # htop
@@ -28,3 +31,4 @@ RUN apt install -y libncursesw5-dev autotools-dev autoconf build-essential
 RUN apt install htop
 # rtty
 RUN apt install -y libev-dev libssl-dev
+RUN apt install -y curl
