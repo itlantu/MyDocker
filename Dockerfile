@@ -2,9 +2,6 @@ FROM ubuntu:20.04
 
 MAINTAINER lantu "it_lantu@outlook.com"
 
-RUN apt update
-RUN apt upgrade
-
 # 下载vscode—server
 RUN ./script/vs-code.install.sh
 
