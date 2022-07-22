@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 MAINTAINER lantu "it_lantu@outlook.com"
 
+RUN mkdir /app
+
 # 下载vscode—server
 ADD ./script/vs-code.install.sh /app/vsc.sh
 RUN cd /app \
