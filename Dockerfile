@@ -18,15 +18,16 @@ RUN \cp /home/MyDocker/sources.list /etc/apt/sources.list
 RUN apt update
 
 # 下载一些常用的开发软件
-#RUN apt install -y openssh-server
-# RUN apt install -y clang
-# RUN apt install -y vim
+RUN apt install -y clang  vim
 
 # 下载vscode—server
 RUN apt install -y curl systemctl wget
-RUN cd/home/MyDocker/script/ ; bash vs-code.install.sh
+RUN cd /home/MyDocker/script/ ; bash vs-code.install.sh
 
 # 下载一些实用工具类软件
-#htop
-RUN apt install -y libncursesw5-dev autotools-dev autoconf build-essential htop libev-dev libssl-dev
+RUN apt install -y libncursesw5-dev autotools-dev autoconf build-essential htop libev-dev libssl-dev ufw
 
+# 防火墙开放端口
+RUN ufw allow 8080
+RUN ufw allow 9999
+ 
