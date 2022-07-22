@@ -23,7 +23,7 @@ RUN apt update
 # RUN apt install -y vim
 
 # 下载vscode—server
-RUN /home/MyDocker/script/vs-code.install.sh
+RUN cd/home/MyDocker/script/ ; ./vs-code.install.sh
 
 # 下载一些实用工具类软件
 # htop
