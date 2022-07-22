@@ -1,0 +1,1 @@
+## `vs-code.install.sh` 脚本文件完全源自github项目[coder/code-server](https://github.com/coder/code-server)
