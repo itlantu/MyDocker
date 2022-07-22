@@ -5,8 +5,7 @@ MAINTAINER lantu "it_lantu@outlook.com"
 # 下载vscode—server
 WORKDIR /app
 ADD ./script/vs-code.install.sh /app
-RUN ls ./
-# RUN chmod u+x ./vs-code.install.sh \
+RUN chmod u+x ./vs-code.install.sh \
   | ./vs-code.install.sh
 
 # 下载一些实用工具类软件
