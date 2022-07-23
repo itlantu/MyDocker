@@ -27,3 +27,5 @@ RUN bash /home/MyDocker/script/vs-code.install.sh
 # 指定工作路径
 WORKDIR /home/
  
+# 运行初始化脚本
+RUN /home/MyDocker/script/init.sh
