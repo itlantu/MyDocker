@@ -7,7 +7,7 @@ mkdir /home/coder
 
 # 将code-server作为守护进程
 cp /home/MyDocker/script/code-server.service /etc/systemd/system/
-systemctl start code-server.service
+systemctl enable code-server.service
 
 # 将code-server设置为开机启动
 # touch /etc/profile.d/code-server.open.sh
