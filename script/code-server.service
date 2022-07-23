@@ -1,6 +1,5 @@
 [Unit]
 Description=code-server
-After=network.target
 
 [Service]
 User=root

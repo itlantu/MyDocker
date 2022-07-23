@@ -21,7 +21,7 @@ RUN apt update
 # 下载vscode—server
 RUN apt install -y curl \
     systemctl \
-    ufw\
+    ufw \
     vim
 RUN bash /home/MyDocker/script/vs-code.install.sh
 
