@@ -4,7 +4,7 @@ Description=code-server
 [Service]
 User=root
 WorkingDirectory=/home/coder
-ExecStart=code-server
+ExecStart=bash /home/MyDocker/script/code-server.open.sh
 Restart=on-failure
 RestartPreventExitStatus=1024
 
