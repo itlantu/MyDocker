@@ -4,6 +4,7 @@ touch ~/.config/code-server/config.yaml
 mkdir /home/coder
 
 # 将code-server作为守护进程
-systemctl enable code-server@root.service
+su cp /home/MyDocker/script/code-server.service /etc/systemd/system/
+systemctl start code-server.service
 
 apt install vim
