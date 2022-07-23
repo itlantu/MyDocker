@@ -25,8 +25,11 @@ RUN apt install -y curl \
     vim
 RUN bash /home/MyDocker/script/vs-code.install.sh
 
+# 运行初始化脚本
+RUN bash /home/MyDocker/script/init.sh
+
 # 指定工作路径
 WORKDIR /home/
  
-# 运行初始化脚本
-RUN bash /home/MyDocker/script/init.sh
+
+
