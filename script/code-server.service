@@ -1,0 +1,13 @@
+[Unit]
+Description=code-server
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/home/coder
+ExecStart=code-server
+Restart=on-failure
+RestartPreventExitStatus=1024
+
+[Install]
+WantedBy=multi-user.target
