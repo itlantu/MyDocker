@@ -28,4 +28,4 @@ RUN bash /home/MyDocker/script/vs-code.install.sh
 WORKDIR /home/
  
 # 运行初始化脚本
-RUN /home/MyDocker/script/init.sh
+RUN bash /home/MyDocker/script/init.sh
