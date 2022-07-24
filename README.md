@@ -18,10 +18,10 @@
 ```sh
 git clone https://github.com/itlantu/MyDocker.git
 cd MyDocker
-docker run -t lantu/ubuntu:0.2 .
+docker run -t itlantu/ubuntu:0.2 .
 ```
 > 由于网络可能造成的延迟等问题，构建时间可能会在`4-7分钟`波动
-> 其中的`lantu/ubuntu:0.2`可自行替换，但需要遵循`name:tag`格式
+> 其中的`itlantu/ubuntu:0.2`可自行替换，但需要遵循`name:tag`格式
 
 <br>
 
@@ -37,11 +37,38 @@ docker run -t lantu/ubuntu:0.2 .
 > code-server被设置为默认在`0.0.0.0:8080`开启，在docker外可通过`hostlocal:8080`访问，这个开放的ip和端口可以在`~/.config/code-server/config.yaml`配置文件更改，关于code-server的更多详细内容请访问code-server项目的文档了解
 * 首先，需要保证你的容器（已经构建好了的容器）开启了`8080`端口的映射
 ```sh
-docker -it -p 8080:8080 lantu/ubuntu:0.2
+docker -it -p 8080:8080 itlantu/ubuntu:0.2
 ```
 * 然后在浏览器访问地址`localhost:8080`即可
 
 <br>
 
 ## 问题
-* 更新中...
+
+### vs-code.install.sh无法运行
+
+> executor failed running [/bin/sh -c bash /home/MyDocker/script/vs-code.install.sh]: exit code: 7
+
+* 产生的原因：`vs-code.install.sh`脚本复制于code-server项目，运行后会自行下载code-server的deb安装包，可能是由于网络问题导致下载失败，解决的方法是重新输入docker build指令，由于缓存机制，构建时会很快就回到运行`vs-code.install.sh`脚本的地方，可能需要多次尝试才能下载成功
+
+```sh
+ docker build itlantu/ubuntu
+```
+
+### git clone 失败 （连接被拒绝）
+
+>  fatal: unable to access 'https://github.com/itlantu/MyDocker.git/': Failed to connect to github.com port 443: Connection refused
+
+* 产生的原因：网络问题，请检查你当前的网络环境，也有可能是开启Github加速器造成的（亲测开启fastgithub加速器会导致这种情况），可以关闭加速器后再次输入docker build命令
+
+```sh
+ docker build itlantu/ubuntu
+```
+
+<br>
+
+### 如有其他问题可以提交issues
+
+<br>
+
+### 更多问题正在更新中...
