@@ -1,7 +1,7 @@
 # 继承ubuntu20.04镜像
 FROM ubuntu:20.04
 
-MAINTAINER lantu "it_lantu@outlook.com"
+MAINTAINER itlantu "it_lantu@outlook.com"
 
 # 暴露8080端口
 EXPOSE 8080/tcp
