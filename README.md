@@ -43,15 +43,20 @@ docker -it -p 8080:8080 itlantu/ubuntu:0.2
 
 > executor failed running [/bin/sh -c bash /home/MyDocker/script/vs-code.install.sh]: exit code: 7
 
+<img src="https://github.com/itlantu/MyDocker/blob/img/vs-code.install.sh.Error.jpg?raw=true">
+
 * 产生的原因：`vs-code.install.sh`脚本复制于code-server项目，运行后会自行下载code-server的deb安装包，可能是由于网络问题导致下载失败，解决的方法是重新输入docker build指令，由于缓存机制，构建时会很快就回到运行`vs-code.install.sh`脚本的地方，可能需要多次尝试才能下载成功
 
 ```sh
  docker build itlantu/ubuntu
 ```
+<br>
 
 ### git clone 失败 （连接被拒绝）
 
 >  fatal: unable to access 'https://github.com/itlantu/MyDocker.git/': Failed to connect to github.com port 443: Connection refused
+
+<img src = "https://github.com/itlantu/MyDocker/blob/img/git_clone_443.Error.jpg?raw=true">
 
 * 产生的原因：网络问题，请检查你当前的网络环境，也有可能是开启Github加速器造成的（亲测开启fastgithub加速器会导致这种情况），可以关闭加速器后再次输入docker build命令
 
