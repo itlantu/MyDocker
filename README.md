@@ -39,10 +39,12 @@ docker run -t itlantu/ubuntu:0.2 .
 ## 访问code-server
 > code-server被设置为默认在`0.0.0.0:8080`开启，在docker外可通过`hostlocal:8080`访问，这个开放的ip和端口可以在`~/.config/code-server/config.yaml`配置文件更改，关于code-server的更多详细内容请访问code-server项目的文档了解
 * 首先，需要保证你的容器（已经构建好了的容器）开启了`8080`端口的映射
+
 ```sh
 docker -it -p 8080:8080 itlantu/ubuntu:0.2
 ```
 * 然后在浏览器访问地址`localhost:8080`即可
+* 默认密码为`123456`
 
 <br>
 
