@@ -29,7 +29,7 @@ docker pull itlantu/ubuntu
 ```sh
 git clone https://github.com/itlantu/MyDocker.git
 cd MyDocker
-docker run -t itlantu/ubuntu:0.2 .
+docker build -t itlantu/ubuntu:0.2 .
 ```
 > 由于网络可能造成的延迟等问题，构建时间可能会在`4-7分钟`波动
 > 其中的`itlantu/ubuntu:0.2`可自行替换，但需要遵循`name:tag`格式
