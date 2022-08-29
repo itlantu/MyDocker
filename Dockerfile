@@ -6,26 +6,9 @@ MAINTAINER itlantu "it_lantu@outlook.com"
 # 暴露8080端口
 EXPOSE 8080/tcp
 
-# 备份源
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.pak
-
-# 更新apt并下载git
-RUN apt update
-RUN apt install -y git
-
-# 从github上下载MyDocker并换源
-RUN cd /home ; git clone https://github.com/itlantu/MyDocker.git
-RUN \cp /home/MyDocker/sources.list /etc/apt/sources.list
-RUN apt update
-
-# 下载vscode—server
-RUN apt install -y curl \
-    systemctl \
-    vim
-RUN bash /home/MyDocker/script/vs-code.install.sh
-
-# 运行初始化脚本
-RUN bash /home/MyDocker/script/init.sh
+# 下载wget
+Run apt install wget
+RUN cd home;wegt https://github.com/itlantu/MyDocker/raw/main/script/main.sh;bash main.sh
 
 # 开机自动执行code-server
 CMD ["code-server"]
