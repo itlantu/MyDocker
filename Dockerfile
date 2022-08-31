@@ -9,6 +9,7 @@ EXPOSE 8080/tcp
 # 下载wget
 RUN apt update
 Run apt install -y wget
+# 下载并执行脚本
 RUN mkdir /home/MyDocker/
 RUN cd /home/MyDocker; wget https://gitee.com/itlantu/my-docker-resources/raw/master/resources/main.sh; 
 RUN bash /home/MyDocker/main.sh
