@@ -7,8 +7,11 @@ MAINTAINER itlantu "it_lantu@outlook.com"
 EXPOSE 8080/tcp
 
 # 下载wget
-Run apt install wget
-RUN cd home;wegt https://github.com/itlantu/MyDocker/raw/main/script/main.sh;bash main.sh
+RUN apt update
+Run apt install -y wget
+RUN mkdir /home/MyDocker/
+RUN cd /home/MyDocker; wget https://gitee.com/itlantu/my-docker-resources/raw/master/resources/main.sh; 
+RUN bash /home/MyDocker/main.sh
 
 # 开机自动执行code-server
 CMD ["code-server"]
