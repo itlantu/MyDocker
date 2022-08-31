@@ -1,6 +1,6 @@
 cd /home
-mkdir MyDocker
-mkdir coder
+mkdir /home/MyDocker
+mkdir /home/coder
 cd MyDocker
 
 # 从gitee下载源
