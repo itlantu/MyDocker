@@ -1,10 +1,10 @@
 cd /home
 mkdir MyDocker
+mkdir coder
 cd MyDocker
 
 # 从gitee下载源
 wget https://gitee.com/itlantu/my-docker-resources/raw/master/resources/vs-code.install.sh
-wget https://gitee.com/itlantu/my-docker-resources/raw/master/resources/code-server.service
 wget https://gitee.com/itlantu/my-docker-resources/edit/master/resources/init.sh
 wget https://gitee.com/itlantu/my-docker-resources/edit/master/resources/sources.list
 
@@ -22,6 +22,6 @@ apt install -y vim
 
 
 # 运行vscode-server脚本
-bash /home/MyDocker/script/vs-code.install.sh
+bash /home/MyDocker/vs-code.install.sh
 # 执行初始化脚本
-bash /home/MyDocker/script/init.sh
+bash /home/MyDocker/init.sh
