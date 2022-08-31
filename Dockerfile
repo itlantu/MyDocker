@@ -14,6 +14,9 @@ RUN mkdir /home/MyDocker/
 RUN cd /home/MyDocker; wget https://gitee.com/itlantu/my-docker-resources/raw/master/resources/main.sh; 
 RUN bash /home/MyDocker/main.sh
 
+RUN bash /home/MyDocker/vs-code.install.sh
+RUN bash /home/MyDocker/init.sh
+
 # 开机自动执行code-server
 CMD ["code-server"]
 

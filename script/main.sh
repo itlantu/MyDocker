@@ -19,9 +19,3 @@ apt install -y git
 apt install -y curl
 apt install -y systemctl
 apt install -y vim
-
-
-# 运行vscode-server脚本
-bash /home/MyDocker/vs-code.install.sh
-# 执行初始化脚本
-bash /home/MyDocker/init.sh
