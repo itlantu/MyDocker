@@ -1,4 +1,4 @@
-cd home
+cd /home
 mkdir MyDocker
 cd MyDocker
 
