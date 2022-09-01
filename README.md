@@ -24,7 +24,7 @@ docker pull itlantu/ubuntu
 ```
 
 ## 构建
-> 通过Dockerfile文件构建，需要先git clone本项目，然后再执行`docker run `构建命令
+> 通过Dockerfile文件构建，需要先git clone本项目，然后再执行`docker build `构建命令
 
 ```sh
 git clone https://github.com/itlantu/MyDocker.git
