@@ -16,7 +16,7 @@
 * 初步配置好的code-server,设置成开启容器自动启动
 * 通过apt安装了curl,systemctl,vim
 
-## 快速上手
+## 快速上手 （当前正在更新下一个版本，建议从Releases下载以前的版本）
 > 本项目构建的镜像已推送到docker hub，可通过docker push命令拉取镜像
 
 ```sh
