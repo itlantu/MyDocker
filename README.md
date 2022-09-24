@@ -33,6 +33,9 @@ docker pull itlantu/ubuntu
 ```
 
 ## 构建
+
+![](https://github.com/itlantu/MyDocker/blob/img/ver0.3build.jpg?raw=true)
+
 > 通过Dockerfile文件构建，需要先git clone本项目，然后再执行`docker build `构建命令
 >> 在Dockerfile中使用了copy指令，并通过国内的gitee下载code-server安装包，使得构建更快
 
@@ -41,7 +44,7 @@ git clone https://github.com/itlantu/MyDocker.git
 cd MyDocker
 docker build -t itlantu/ubuntu:0.3 .
 ```
-> 由于网络可能造成的延迟等问题，构建时间可能会在`1-4分钟`波动
+> 由于网络可能造成的延迟等问题，构建时间可能会在`2-4分钟`波动
 > 其中的`itlantu/ubuntu:0.3`可自行替换，但需要遵循`name:tag`格式
 > 建议将docker换成国内源
 
