@@ -1,37 +1,74 @@
 path=/home/MyDocker
-cd $path
-# 源备份
-cp /etc/apt/sources.list /etc/apt/sources.list.pak
-# 换源
-rm -f /etc/apt/sources.list
-cp sources.list /etc/apt/sources.list
-#
-apt update
-apt install -y curl
-apt install -y systemctl
-apt install -y wget
+filedeb="code-server.deb"
+file1="xaa"
+file2="xab"
+debUrl="https://gitee.com/itlantu/MyDocker/releases/download/4.7"
 
-# code-server的准备与安装
-mkdir ../code-server
-cd ../code-server
-# 从gitee上下载code-server安装包的切片
-wget -P . https://gitee.com/itlantu/MyDocker/releases/download/4.7/xaa
-wget -P . https://gitee.com/itlantu/MyDocker/releases/download/4.7/xab
-# 合成完成的deb并安装
-cat xaa xab > code-server.deb
-dpkg –i code-server.deb
-# 删除安装包文件
-rm -f xaa
-rm -f xab
-rm -f code-server.deb
-rm code-server
+fileReplace(){
+    rm -f $2
+    cp $1 $2
+}
 
+sources(){
+    # 源备份
+    cp /etc/apt/sources.list /etc/apt/sources.list.pak
+    # 换源
+    
+    fileReplace $path/sources.list /etc/apt/sources.list
+}
+
+# 通过apt下载一些软件
+aptInstall(){
+    apt update
+    apt install -y curl
+    apt install -y wget
+    apt install -y git
+    apt install -y vim
+}
+
+# 下载并安装code-server
+DebInstall(){
+    if [ ! -d $path/package ];then
+        mkdir $path/package
+    fi
+
+    cd $path/package
+
+    # 是否存在code-server.deb包
+    if [ ! -f $filedeb ];then
+        # 是否存在被切片的code-server.deb包
+        if [ ! -f $file1 ];then
+            wget -P . $debUrl/$file1
+        fi
+
+        if [ ! -f $file2 ];then
+            wget -P . $debUrl/$file2
+        fi
+
+        cat $file1 $file2 > code-server.deb
+    fi
+
+    dpkg -i code-server.deb
+
+    # 删除安装包切片文件
+    rm -f xaa
+    rm -f xab
+}
 
 #vscode初始化配置
-mkdir /home/coder
-mkdir ~/.config/
-mkdir ~/.config/code-server
-touch ~/.config/code-server/config.yaml
-\cp $path/script/config.yaml ~/.config/code-server/config.yaml
+CodeSeverInit(){
+    mkdir /home/coder
+    mkdir ~/.config/
+    mkdir ~/.config/code-server
+    fileReplace $path/script/config.yaml ~/.config/code-server/config.yaml
+}
 
+main(){
+    sources
+    aptInstall
+    DebInstall
+    CodeSeverInit
+}
+
+main
 
