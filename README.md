@@ -7,7 +7,7 @@
 
 ## 简介
 
-### MyDocker项目是一个个人docker配置项目，继承了ubuntu:20.04的docker镜像，使用了[code-server](https://github.com/microsoft/vscode) (code-server项目是一款遵循MIT许可证的开源网页代码编辑器)，开启容器后，可以在网页中使用code-server，开箱即用
+### MyDocker项目是一个个人docker配置项目，在docker容器中继承了ubuntu 20.04的docker镜像，并使用了[code-server](https://github.com/microsoft/vscode) (code-server项目是一款遵循MIT许可证的开源网页代码编辑器)，开启容器后，可以在网页中使用code-server，开箱即用
 > code-server项目的GitHub仓库地址为:https://github.com/microsoft/vscode
 
 ## 项目包含
@@ -16,7 +16,8 @@
 * apt源换为清华源
 * 初步安装并配置好的code-server,设置成开启容器自动启动
 * 通过apt安装了curl,wget,git,vim
-* 将code-server的deb包分割成两个文件，发布到[gitee](https://gitee.com/itlantu/MyDocker/releases/tag/4.7)并通过其下载,使得下载code-server安装包更快
+
+> 本项目将code-server的deb包分割成两个文件，发布到[gitee](https://gitee.com/itlantu/MyDocker/releases/tag/4.7)并通过其下载,使得下载code-server安装包更快
 
 ## 开放端口
 
@@ -73,7 +74,3 @@ docker -it -p 8080:8080 itlantu/ubuntu:0.3
 <br>
 
 ### 如有其他问题可以提交issues
-
-
-
-
