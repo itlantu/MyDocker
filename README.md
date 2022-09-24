@@ -1,6 +1,6 @@
 # MyDocker  个人docker配置
 
-<img src="https://img.shields.io/badge/docker-ubuntu:20.04-orange"> <img src="https://img.shields.io/badge/laster-0.2-blue"> 
+<img src="https://img.shields.io/badge/docker-ubuntu:20.04-orange"> <img src="https://img.shields.io/badge/laster-0.3-blue"> 
 
 -------------
 <img src="https://github.com/itlantu/MyDocker/blob/img/1.jpg?raw=true">
@@ -12,9 +12,18 @@
 
 ## 项目包含
 
-* apt换成阿里云的源
-* 初步配置好的code-server,设置成开启容器自动启动
-* 通过apt安装了curl,systemctl,vim
+* 继承了ubuntu 20.04的镜像
+* apt源换为清华源
+* 初步安装并配置好的code-server,设置成开启容器自动启动
+* 通过apt安装了curl,wget,git,vim
+* 将code-server的deb包分割成两个文件，发布到[gitee](https://gitee.com/itlantu/MyDocker/releases/tag/4.7)并通过其下载,使得下载code-server安装包更快
+
+## 开放端口
+
+开放的端口可在Dockerfile文件中修改，如使用默认的话可能会开放`8080`和`8081`两个端口
+
+* `8080`端口默认被code-server占用
+* `8081`端口没有被任何程序占用
 
 ## 快速上手 （当前正在更新下一个版本，建议从Releases下载以前的版本）
 > 本项目构建的镜像已推送到docker hub，可通过docker push命令拉取镜像
@@ -25,23 +34,27 @@ docker pull itlantu/ubuntu
 
 ## 构建
 > 通过Dockerfile文件构建，需要先git clone本项目，然后再执行`docker build `构建命令
+>> 在Dockerfile中使用了copy指令，并通过国内的gitee下载code-server安装包，使得构建更快
 
 ```sh
 git clone https://github.com/itlantu/MyDocker.git
 cd MyDocker
-docker build -t itlantu/ubuntu:0.2 .
+docker build -t itlantu/ubuntu:0.3 .
 ```
-> 由于网络可能造成的延迟等问题，构建时间可能会在`4-7分钟`波动
-> 其中的`itlantu/ubuntu:0.2`可自行替换，但需要遵循`name:tag`格式
+> 由于网络可能造成的延迟等问题，构建时间可能会在`1-4分钟`波动
+> 其中的`itlantu/ubuntu:0.3`可自行替换，但需要遵循`name:tag`格式
+> 建议将docker换成国内源
 
 <br>
 
 ## 访问code-server
-> code-server被设置为默认在`0.0.0.0:8080`开启，在docker外可通过`hostlocal:8080`访问，这个开放的ip和端口可以在`~/.config/code-server/config.yaml`配置文件更改，关于code-server的更多详细内容请访问code-server项目的文档了解
-* 首先，需要保证你的容器（已经构建好了的容器）开启了`8080`端口的映射
+> code-server被设置为默认在`0.0.0.0:8080`开启，可通过浏览器访问`hostlocal:8080`打开访问界面
+>code-server的开放的ip和端口可以在`~/.config/code-server/config.yaml`配置文件更改，关于code-server的更多详细内容请访问code-server项目的文档了解
+
+* 首先，需要保证（已经构建好了的）容器开启了`8080`端口的映射
 
 ```sh
-docker -it -p 8080:8080 itlantu/ubuntu:0.2
+docker -it -p 8080:8080 itlantu/ubuntu:0.3
 ```
 * 然后在浏览器访问地址`localhost:8080`即可
 * 默认密码为`123456`
@@ -50,33 +63,14 @@ docker -it -p 8080:8080 itlantu/ubuntu:0.2
 
 ## 问题
 
-### 1.vs-code.install.sh无法运行
+<br>
 
-> executor failed running [/bin/sh -c bash /home/MyDocker/script/vs-code.install.sh]: exit code: 7
-
-<img src="https://github.com/itlantu/MyDocker/blob/img/vs-code.install.sh.Error.jpg?raw=true">
-
-* 产生的原因：`vs-code.install.sh`脚本复制于code-server项目，运行后会自行下载code-server的deb安装包，可能是由于网络问题导致下载失败，解决的方法是重新输入docker build指令，由于缓存机制，构建时会很快就回到运行`vs-code.install.sh`脚本的地方，可能需要多次尝试才能下载成功
-
-```sh
- docker build itlantu/ubuntu
-```
-
-### 2.git clone 失败 （连接被拒绝）
-
->  fatal: unable to access 'https://github.com/itlantu/MyDocker.git/': Failed to connect to github.com port 443: Connection refused
-
-<img src = "https://github.com/itlantu/MyDocker/blob/img/git_clone_443.Error.jpg?raw=true">
-
-* 产生的原因：网络问题，请检查你当前的网络环境，也有可能是开启Github加速器造成的（亲测开启fastgithub加速器会导致这种情况），可以关闭加速器后再次输入docker build命令
-
-```sh
- docker build itlantu/ubuntu
-```
-
-
-### 如有其他问题可以提交issues
+ 更多问题正在更新中...
 
 <br>
 
-### 更多问题正在更新中...
+### 如有其他问题可以提交issues
+
+
+
+
