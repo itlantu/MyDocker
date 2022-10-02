@@ -37,10 +37,13 @@ sources(){
 aptInstall(){
     apt update
 
-    # 遍历aptInstallList数组，执行apt install
-    for name in $aptInstallList 
+    # while循环遍历aptInstallList数组，执行apt install
+    i=0
+    len=${#aptInstallList[@]}
+    while(( $i<$len ))
     do
-        apt install -y  $name
+        apt install -y "${aptInstallList[$i]}"
+        let "i++"
     done
 }
 
@@ -67,17 +70,16 @@ CodeServerDebInstall(){
         fi
 
         # 将切片合成完整的code-server deb包
-        cat $file1 $file2 > code-server.deb
+        cat $fileSpiltName1 $fileSpiltName2 >> filedeb
     fi
 
     # 安装code-server的deb包
-    dpkg -i code-server.deb
+    dpkg -i filedeb
 
     # 删除安装包切片文件和code-server安装包
-    rm -f xaa
-    rm -f xab
-    
-
+    rm -f xxa
+    rm -f xxb
+    rm -f filedeb
 }
 
 # 根据codeServerConfig关联数组，初始化code-server的配置
@@ -89,13 +91,13 @@ CodeSeverInit(){
     # fileReplace $path/script/config.yaml ~/.config/code-server/config.yaml
 
     # 根据codeServerConfig关联数组的内容生成字符串str
-    str="bind-addr: ${codeServerConfig["bind-addr"]}\n"\
-    str+="auth: ${codeServerConfig["auth"]}\n"\
-    str+="password:${codeServerConfig["password"]}\n"\
-    str+="cert:${codeServerConfig["cert"]}"
+    str="bind-addr: ${codeServerConfig["bind-addr"]}\n"
+    str+="auth: ${codeServerConfig["auth"]}\n"
+    str+="password: ${codeServerConfig["password"]}\n"
+    str+="cert: ${codeServerConfig["cert"]}"
 
     # 将str写入code-server的配置文件
-    echo -e ${str} >> ~/.config/code-server/config.yaml
+    echo -e "${str}" >> ~/.config/code-server/config.yaml 
 }
 
 # main函数将会执行所有函数
