@@ -12,7 +12,7 @@ RUN mkdir /home/MyDocker
 COPY / /home/MyDocker
 RUN bash /home/MyDocker/script/main.sh
 
-#开机自动执行code-server
+# 将code-server设置为开启容器则自动启动
 CMD ["code-server"]
 
 # 指定工作路径
