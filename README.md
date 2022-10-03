@@ -20,11 +20,13 @@
 
 ## 快速上手 
 
-> 本项目构建的镜像已推送到docker hub，可通过docker push命令拉取镜像
+> 本项目构建的镜像已推送到docker hub，可通过docker pull命令拉取镜像
 
 ```sh
 docker pull itlantu/ubuntu 0.4
 ```
+
+> 通过构建也可以得到镜像
 
 ## 构建
 
@@ -36,7 +38,7 @@ docker pull itlantu/ubuntu 0.4
 ```sh
 git clone https://github.com/itlantu/MyDocker.git
 cd MyDocker
-docker build -t itlantu/ubuntu:0.3 .
+docker build -t itlantu/ubuntu:0.4 .
 ```
 > 由于网络可能造成的延迟等问题，构建时间可能会在`2-4分钟`波动
 > 建议将docker换成国内源，并开启docker的buildkit构建
@@ -50,7 +52,7 @@ docker build -t itlantu/ubuntu:0.3 .
 * 首先，需要保证(已经构建好了的)容器开启了`8080`端口的映射
 
 ```sh
-docker -it -p 8080:8081 itlantu/ubuntu:0.3
+docker -it -p 8080:8081 itlantu/ubuntu:0.4
 ```
 
 * 然后在浏览器访问地址`localhost:8080`即可
