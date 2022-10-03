@@ -28,7 +28,7 @@ docker pull itlantu/ubuntu 0.4
 
 ## 构建
 
-![](https://github.com/itlantu/MyDocker/blob/img/ver0.3build.jpg?raw=true)
+![](https://github.com/itlantu/MyDocker/blob/img/ver0.4build.jpg?raw=true)
 
 * 需要从master分支或对应版本的分支拉取仓库
 * 执行`docker build`构建命令
