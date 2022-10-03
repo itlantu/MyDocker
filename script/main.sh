@@ -1,12 +1,12 @@
 #!/bin/bash
 
-path=/home/MyDocker       
+path=/home/MyDocker 
 
 filedeb="code-server.deb" # code-server的deb的文件名
 fileSpiltName1="xaa"               # code-server的deb的第一个切片的文件名
 fileSpiltName2="xab"               # code-server的deb的第二个切片的文件名
-debUrl="https://gitee.com/itlantu/MyDocker/releases/download/4.7"
 
+debUrl="https://gitee.com/itlantu/MyDocker/releases/download/4.7"
 # aptInstallList数组存放需要apt install的软件名称，这些软件将会在aptInstall函数的循环被依次apt install
 aptInstallList=("curl" "wget" "git" "vim")
 
@@ -16,7 +16,6 @@ codeServerConfig["bind-addr"]="0.0.0.0:8080" # 默认端口
 codeServerConfig["auth"]="password"          # 登录方式
 codeServerConfig["password"]="123456"        # 登录密码
 codeServerConfig["cert"]="false"             #
-
 
 # 用$1文件替换$2文件，$2文件将会被删除
 fileReplace(){
