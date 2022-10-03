@@ -10,6 +10,8 @@ EXPOSE 8081/tcp
 RUN mkdir /home/MyDocker
 
 COPY / /home/MyDocker
+# 去除main.sh的\r字符
+RUN sed -i 's/\r//' /home/MyDocker/script/main.sh
 RUN bash /home/MyDocker/script/main.sh
 
 # 将code-server设置为开启容器则自动启动
