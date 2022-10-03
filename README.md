@@ -11,7 +11,7 @@
 ### MyDocker 是一个个人开发的docker镜像项目,该镜像以`ubuntu:20.04镜像`为基础镜像，并进行了以下的操作
 
 * 通过shell脚本自动执行apt换源([清华源](https://mirrors.tuna.tsinghua.edu.cn/))
-* 通过apt下载的`curl`,`wget`,`git`,`vim` 
+* 通过apt下载`curl`,`wget`,`git`,`vim` 
 * 通过[gitee](https://gitee.com/itlantu/MyDocker/releases/tag/4.7)下载的`code-server`([code-server项目在github上开源](https://github.com/coder/code-server))，并进行了初始化配置
 * 容器开启则自动执行`code-server`指令，运行code-server
 * 默认开放了`8080`端口(code-server使用) 和 `8081`端口(无程序占用，可自定义使用)
